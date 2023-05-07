@@ -62,3 +62,10 @@ app.delete("/delete", async (req, res) => {
         console.log("Error while deleting :" + p_id + " " + err);
     }
 });
+app.get("/:keywords", async (req, resp) => {
+    const keywords = req.params.keywords;
+    const query = { keywords: keywords };
+    const oneProduct = await Question.findOne(query);
+    console.log(oneProduct);
+    resp.send(oneProduct);
+});
